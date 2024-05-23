@@ -32,11 +32,6 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             'category' => 'category_Science Fiction',
         ],
         [
-            'title' => 'Dark',
-            'synopsis' => "Apres la disparition d'un garçon, la peur nait dans la ville",
-            'category' => 'category_Science Fiction',
-        ],
-        [
             'title' => 'Vikings',
             'synopsis' => "Des gros gars virils qui se tape sur la gueule",
             'category' => 'category_Aventure',
