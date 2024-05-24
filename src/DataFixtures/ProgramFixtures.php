@@ -6,49 +6,21 @@ use App\Entity\Program;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use phpDocumentor\Reflection\Types\Self_;
+use Faker\Factory;
+
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
-    const PROGRAMS = [
-        [
-            'title' => 'Walking Dead',
-            'synopsis' => 'Des zombies envahissent la terre.',
-            'category' => 'category_Action',
-        ],
-        [
-            'title' => 'Peaky Blinders',
-            'synopsis' => 'Des histoires de gitan',
-            'category' => 'category_Action',
-        ],
-        [
-            'title' => 'Breaking bad',
-            'synopsis' => 'Encore un qui essaye de faire de la meth',
-            'category' => 'category_Action',
-        ],
-        [
-            'title' => 'Dark',
-            'synopsis' => "Apres la disparition d'un garçon, la peur nait dans la ville",
-            'category' => 'category_Science Fiction',
-        ],
-        [
-            'title' => 'Vikings',
-            'synopsis' => "Des gros gars virils qui se tape sur la gueule",
-            'category' => 'category_Aventure',
-        ],
-        [
-            'title' => 'Blue eye samourai',
-            'synopsis' => "Ca casse des gueules au sabre",
-            'category' => 'category_Animation',
-        ],
-    ];
+
     public function load(ObjectManager $manager): void
     {
-        foreach (Self::PROGRAMS as $key => $programs) {
+        $faker = Factory::create('fr_FR');
+        for ($i = 1; $i <= 15; $i++) {
             $program = new Program();
-            $program->setTitle($programs['title']);
-            $program->setSynopsis($programs['synopsis']);
-            $program->setCategory($this->getReference($programs['category']));
+            $program->setTitle($faker->words(3, true));
+            $program->setSynopsis($faker->paragraph(2, true));
+            $program->setCategory($this->getReference('category_' . $faker->numberBetween(1, 7)));
+            $this->addReference('program_' . $i, $program );
             $manager->persist($program);
         }
         $manager->flush();
