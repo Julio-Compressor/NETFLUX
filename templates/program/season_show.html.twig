@@ -7,14 +7,13 @@
         <h1>Saison {{ season.number }}</h1>
         <ul>
             {% for episode in season.episodes %}
-                <li>{{ episode.number}}: {{ episode.title }}</li>
+                <li><a href="{{ path("program_episode_show", { program: program.id, season: season.id, episode: episode.id }) }}">{{ episode.number}}: {{ episode.title }}</a></li>
             {% endfor %}
         </ul>
 
-
     </article>
 
-    <a href="{{ path('program_index') }}">
-        Retour à la liste des programmes
+    <a href="{{ path("program_show", { id: program.id }) }}">
+        Retour à la liste de la série
     </a>
 {% endblock %}
