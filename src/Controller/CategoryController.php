@@ -33,7 +33,7 @@ class CategoryController extends abstractController
         // Get data from HTTP request
         $form->handleRequest($request);
         // Was the form submitted ?
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($category);
             $entityManager->flush();
             return $this->redirectToRoute('category_index');

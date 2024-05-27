@@ -1,4 +1,14 @@
 {{ form_start(form) }}
+<div class="row">
+    <div class="col-3">
+        {{ form_label(form.title, 'Titre') }}
+        {{ form_widget(form.title) }}
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+</div>
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
