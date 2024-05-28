@@ -1,3 +1,15 @@
 @import '../../vendor/twbs/bootstrap/scss/bootstrap';
+@font-face {
+  font-family: "american_captain";
+  src: url("../font/american_captain.ttf") format("opentype");
+}
+
+body {
+  font-family: "american_captain", serif;
+}
+nav {
+  font-family: "american_captain", serif; 
+}
+
 
 
